@@ -48,7 +48,7 @@ const SetUsername = () => {
       );
       localStorage.removeItem("userInfo");
 
-      setTimeout(() => navigate("/userHomePage"), 1500);
+      setTimeout(() => navigate("/home"), 1500);
     } catch (err) {
       console.error("❌ Failed to set username:", err);
       setMessage(err.response?.data?.message || "❌ Something went wrong");

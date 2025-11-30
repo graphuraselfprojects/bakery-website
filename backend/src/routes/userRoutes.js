@@ -56,32 +56,6 @@ router.put("/update-profile/:id", protect, async (req, res) => {
 });
 
 // ----------------------------------------------------
-// CHANGE PASSWORD
-// ----------------------------------------------------
-router.put("/change-password", protect, async (req, res) => {
-  try {
-    const { oldPassword, newPassword } = req.body;
-
-    const user = await User.findById(req.user.id).select("+password");
-    if (!user) return res.status(404).json({ message: "User not found" });
-
-    const isMatch = await user.comparePassword(oldPassword);
-    if (!isMatch)
-      return res.status(400).json({ message: "Old password incorrect" });
-
-    user.password = newPassword; // will be hashed automatically by pre('save')
-    await user.save();
-
-    res.json({
-      success: true,
-      message: "Password changed successfully",
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
-// ----------------------------------------------------
 // UPLOAD PROFILE PIC
 // ----------------------------------------------------
 router.put(
