@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  FaEnvelope,
-  FaLinkedin,
-  FaInstagram,
-  FaFacebook,
-  FaMapMarkerAlt,
-  FaArrowRight,
-  FaPaperPlane,
+    FaEnvelope,
+    FaLinkedin,
+    FaInstagram,  
+    FaFacebook,
+    FaMapMarkerAlt,
+    FaArrowRight,
+    FaPaperPlane,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import logo from "../assets/homePage/logo White.png";
