@@ -90,6 +90,7 @@ const Navbar = () => {
         { label: "Pastries", path: "/pastries" },
         { label: "Cupcakes", path: "/cupcakes" },
         { label: "Bread & Cookies", path: "/cookies" },
+        { label: "More", path: "/menu" },
       ],
     },
     {

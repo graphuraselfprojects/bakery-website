@@ -1,25 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
 
 @import "tailwindcss";
 
-.style{
-    font-family: "Roboto Slab", serif;
+.style {
+  font-family: "Roboto Slab", serif;
 }
 
-.profile{
-    background-image: url('https://media.istockphoto.com/id/880710798/vector/seamless-vector-bakery-pastry-pattern.jpg?s=612x612&w=0&k=20&c=e5TN-lIQoRhqrdIoJhUs_VfhzcmDxEY869s6s1SRYF8=');
-    min-height: 100vh;  
+.profile {
+  background-image: url("https://media.istockphoto.com/id/880710798/vector/seamless-vector-bakery-pastry-pattern.jpg?s=612x612&w=0&k=20&c=e5TN-lIQoRhqrdIoJhUs_VfhzcmDxEY869s6s1SRYF8=");
+  min-height: 100vh;
 }
 
 .yellow-circle {
-    width: 80px;
-    height: 80px; 
-    background-color: #ffbe00;
-    border-radius: 50%;
-    display: block;
-    box-shadow: 0 0 50px 20px rgba(255, 255, 0, 1.5);
+  width: 80px;
+  height: 80px;
+  background-color: #ffbe00;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 0 50px 20px rgba(255, 255, 0, 1.5);
 }
-
 
 /* Slide-up hover effect */
 .slide-up {
@@ -33,46 +32,52 @@
 
 /* Media Queries of benefit of Bread */
 @media (max-width: 1258px) {
-    .benefitBread{
-        grid-template-columns: 1fr;
-    }
+  .benefitBread {
+    grid-template-columns: 1fr;
+  }
 
-    .benefitBread img{
-       height: auto;
-       width: 60%;
-    }
+  .benefitBread img {
+    height: auto;
+    width: 60%;
+  }
 
-    .benefitBread > div:last-child{
-        margin-top: 50px;
-    }
+  .benefitBread > div:last-child {
+    margin-top: 50px;
+  }
 }
-
 
 /* Media Queries of chefCards */
-@media (max-width: 1150px) and (min-width: 1024px){
-    .chefCards{
-        margin-left: 50px;
-        margin-right: 50px;
-    }
+@media (max-width: 1150px) and (min-width: 1024px) {
+  .chefCards {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 }
-
 
 /* Media Queries of circle */
-@media(max-width: 768px){
-    .yellow-circle{
-        display: none;
-    }
+@media (max-width: 768px) {
+  .yellow-circle {
+    display: none;
+  }
 }
 
-
 /* Media Queries of image gallery */
-@media(max-width: 600px){
-    .imageGallery{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .imageCard{
-        height: 290px;
-    }
+@media (max-width: 600px) {
+  .imageGallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .imageCard {
+    height: 290px;
+  }
+  .labelText {
+    --tw-translate-y: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 100),
+      rgba(0, 0, 0, 20),
+      rgba(0, 0, 0, 0)
+    );
+  }
 }
 /* @tailwind base;
 @tailwind components; */

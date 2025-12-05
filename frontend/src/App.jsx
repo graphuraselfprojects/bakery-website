@@ -2,29 +2,55 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import MainLayout from "./components/layout/MainLayout";
 import AuthLayout from "./components/layout/AuthLayout";
+import DashboardLayout from "./components/layout/DashboardLayout";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
+// ---------- PUBLIC PAGES ----------
 import Homepage from "./components/homePage/Homepage";
 import About from "./components/About/About";
+import ContactUs from "./components/ContactUs";
+
+// ---------- USER AUTH ----------
 import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 import VerifyOTP from "./components/auth/VerifyOTP";
 import SetUsername from "./components/auth/SetUsername";
-import Login from "./components/auth/Login";
-// import Profile from "./components/userProfile/Profile";
-import Profile from "./components/userProfile/Profile"
-import EditProfile from "./components/userProfile/EditProfile";
-
-import ContactUs from "./components/ContactUs";
 import ForgetPassword from "./components/auth/ForgetPassword";
 import ResetPassword from "./components/auth/ResetPassword";
 import VerifyForgetPasswordOTP from "./components/auth/VerifyForgetPasswordOTP";
 
+// ---------- USER PROFILE ----------
+import Profile from "./components/userProfile/Profile";
+import EditProfile from "./components/userProfile/EditProfile";
+
+// ---------- USER PRODUCTS ----------
+import AllProducts from "./components/user/AllProducts";
+import ProductDetails from "./components/user/ProductDetails";
+
+// ---------- ADMIN ----------
+import AdminLogin from "./components/admin/AdminLogin";
+import DashboardHome from "./components/admin/Dashboard";
+import CreateProduct from "./components/admin/CreateProduct";
+import UpdateProduct from "./components/admin/UpdateProduct";
+import Products from "./components/admin/Products";
+import Orders from "./components/admin/Orders";
+import OffersPage from "./components/admin/OffersPage";
+import Delivery from "./components/admin/Delivery";
+import Customers from "./components/admin/CustomerDetail";
+import CreateAdmin from "./components/admin/CreateAdmin";
+import AdminList from "./components/admin/AdminList";
+import AllUsers from "./components/admin/AllUsers";
+import Cart from "./components/homePage/Cart";
+import OrderSection from "./components/homePage/OrderSection";
+import FilterPage from "./components/homePage/Filter";
+
 export default function App() {
   return (
     <Routes>
-      {/* Default route → Homepage */}
+      {/* ====================== DEFAULT ====================== */}
       <Route path="/" element={<Navigate to="/home" />} />
 
-      {/* Public Pages */}
+      {/* ====================== PUBLIC PAGES ====================== */}
       <Route
         path="/home"
         element={
@@ -52,7 +78,7 @@ export default function App() {
         }
       />
 
-      {/* Auth Pages */}
+      {/* ====================== USER AUTH ====================== */}
       <Route
         path="/register"
         element={
@@ -61,6 +87,7 @@ export default function App() {
           </AuthLayout>
         }
       />
+
       <Route
         path="/login"
         element={
@@ -87,6 +114,7 @@ export default function App() {
           </AuthLayout>
         }
       />
+
       <Route
         path="/forget-password"
         element={
@@ -105,15 +133,6 @@ export default function App() {
         }
       />
 
-      {/* User profile */}
-      <Route
-        path="/update-profile"
-        element={
-          <AuthLayout>
-            <EditProfile />
-          </AuthLayout>
-        }
-      />
       <Route
         path="/otp-verify"
         element={
@@ -122,19 +141,101 @@ export default function App() {
           </AuthLayout>
         }
       />
+
+      {/* ====================== USER PROFILE ====================== */}
       <Route
         path="/profile"
         element={
-          <MainLayout>
+          <AuthLayout>
             <Profile />
-          </MainLayout>
+          </AuthLayout>
         }
       />
+
       <Route
         path="/edit-profile"
         element={
           <MainLayout>
             <EditProfile />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/menu"
+        element={
+          <MainLayout>
+            <FilterPage />
+          </MainLayout>
+        }
+      />
+
+      {/* ====================== USER PRODUCTS ====================== */}
+      <Route
+        path="/products"
+        element={
+          <MainLayout>
+            <AllProducts />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/product/:id"
+        element={
+          <MainLayout>
+            <ProductDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <MainLayout>
+            <Cart />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/order"
+        element={
+          <ProtectedRoutes>
+            <OrderSection />
+          </ProtectedRoutes>
+        }
+      />
+
+      {/* ====================== ADMIN LOGIN ONLY ====================== */}
+      <Route
+        path="/admin-login"
+        element={
+          <AuthLayout>
+            <AdminLogin />
+          </AuthLayout>
+        }
+      />
+
+      {/* ====================== ADMIN DASHBOARD ====================== */}
+      <Route path="/admin" element={<DashboardLayout />}>
+        <Route path="dashboard" element={<DashboardHome />} />
+        <Route path="orders" element={<Orders />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/create" element={<CreateProduct />} />
+        <Route path="products/update/:id" element={<UpdateProduct />} />
+        <Route path="offers" element={<OffersPage />} />
+        <Route path="delivery" element={<Delivery />} />
+        <Route path="customer-detail" element={<Customers />} />
+        <Route path="create-admin" element={<CreateAdmin />} />
+        <Route path="all-admins" element={<AdminList />} />
+        <Route path="all-users" element={<AllUsers />} />
+      </Route>
+
+      {/* ====================== 404 ====================== */}
+      <Route
+        path="*"
+        element={
+          <MainLayout>
+            <h1 className="text-3xl text-center mt-20">404 — Page Not Found</h1>
           </MainLayout>
         }
       />
