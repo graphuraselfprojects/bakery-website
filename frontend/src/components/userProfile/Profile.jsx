@@ -103,6 +103,21 @@ export default function Profile() {
     }
   };
 
+  const handleLogout = async () => {
+    // 🔥 Remove user session
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("userInfo");
+
+    // Trigger navbar update if needed
+    window.dispatchEvent(new Event("storage"));
+
+    // Success toast
+    toast.success("Logged out successfully!");
+
+    // Redirect to homepage
+    window.location.href = "/";
+  };
+
   // Format date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -304,9 +319,13 @@ export default function Profile() {
 
             {/* Logout & Delete */}
             <div className="flex gap-2 mt-6">
-              <button className="w-full bg-[#FFEFDC] text-[#FF6900] py-2 rounded-lg font-medium hover:bg-[#fbe3c5]">
+              <button
+                onClick={() => setShowLogoutModal(true)}
+                className="w-full bg-[#FFEFDC] text-[#FF6900] py-2 rounded-lg font-medium hover:bg-[#fbe3c5]"
+              >
                 Logout
               </button>
+
               <button className="w-full bg-red-600 text-white py-2 rounded-lg font-medium hover:bg-red-700">
                 Delete Account
               </button>
@@ -520,6 +539,33 @@ export default function Profile() {
               </div>
             )}
           </div>
+          {/* LOGOUT CONFIRMATION POPUP */}
+          {showLogoutModal && (
+            <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+              <div className="bg-white p-6 rounded-xl shadow-xl w-80 text-center">
+                <h2 className="text-lg font-semibold mb-3">Confirm Logout</h2>
+                <p className="text-gray-600 mb-5">
+                  Are you sure you want to logout?
+                </p>
+
+                <div className="flex gap-3 justify-center">
+                  <button
+                    onClick={() => setShowLogoutModal(false)}
+                    className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </div>
