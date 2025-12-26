@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://bakery-website-fqhk.onrender.com"
+      "destination": "https://bakery-website-fqhk.onrender.com/api"
     },
     {
       "source": "/(.*)",
