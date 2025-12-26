@@ -77,12 +77,9 @@ const Orders = () => {
       setLoading(true);
       const token = localStorage.getItem("adminToken");
 
-      const response = await axios.get(
-        "/api/admin/orders",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.get("/api/admin/orders", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       if (response.data.success) {
         setOrders(response.data.orders);
@@ -175,12 +172,9 @@ const Orders = () => {
     try {
       const token = localStorage.getItem("adminToken");
 
-      const response = await axios.delete(
-        `/api/admin/orders/${orderId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.delete(`/api/admin/orders/${orderId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       if (response.data.success) {
         toast.success("Order deleted successfully");
@@ -211,7 +205,7 @@ const Orders = () => {
   }
 
   return (
-    <div className="p-6 lg:ml-64">
+    <div className="p-6 lg:ml-64 h-screen overflow-auto">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-[#3f2e20] mb-2">
           Orders Management
