@@ -1,9 +1,8 @@
-
 {
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://bakery-website-fqhk.onrender.com/api/:path*"
+      "destination": "https://bakery-website-4gd2.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",
