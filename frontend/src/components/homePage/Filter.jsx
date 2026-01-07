@@ -430,7 +430,7 @@ export default function FilterPage() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-left"
               >
-                {/* <motion.button
+                <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
@@ -442,7 +442,7 @@ export default function FilterPage() {
                   className="px-8 py-4 bg-gradient-to-r from-[#dda56a] to-[#e8b381] text-white font-bold text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all"
                 >
                   Explore Our Menu
-                </motion.button> */}
+                </motion.button>
               </motion.div>
             </div>
           </div>
